@@ -9,12 +9,6 @@
         <div class="col">
             <h4>Ingresar Pokemon</h4>
 
-            <!-- {% if form.errors %}
-
-            <p class="bg-warning">ERROR</p>
-
-            {% endif %} -->
-
             <form action="/pokedex/pokemon/" method="POST">{% csrf_token %}
                 <!-- MODEL FORM -->
                 <div class="mb-3">
@@ -29,31 +23,37 @@
                     <label for="tipo" class="form-label">Tipo</label>
                     <input type="text" class="form-control" id="tipo" name="tipo">
                 </div>
-
-                <!-- API FORM -->
-                <!-- <table>
-                    {{form.as_table}}
-                </table> -->
-
                 <button class="btn btn-primary" type="submit" value="Enviar">Enviar</button>
             </form>
         </div>
         <div class="col">
             <h4>Buscar Por:</h4>
-            <form>
+            <form action="/pokedex/buscarPokemon/" method="GET">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Pikachu" aria-label="nombre pokemon"
-                            aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">🔍
-
-                            </button>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" id="nombre" placeholder="Pikachu" name="nombre">
                 </div>
+                <button class="btn btn-primary" type="submit" value="Buscar">Buscar</button>
             </form>
+
+            {% if pokemons %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pokemon in pokemons %}
+                    <tr>
+                        <td scope="row">{{ pokemon.0 }}</td>
+                        <td>{{ pokemon.nombre }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
         </div>
     </div>
 </div>

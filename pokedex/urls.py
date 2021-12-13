@@ -7,4 +7,5 @@ urlpatterns = [
     path('pokemon/', views.pokemon, name='pokemon'),
     path('pokeball/', views.pokeball, name='pokeball'),
     path('entrenador/', views.entrenador, name='entrenador'),
+    path('buscarPokemon/', views.buscarPokemon)
 ]
