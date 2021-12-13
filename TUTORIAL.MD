@@ -272,6 +272,8 @@ admin.site.register(Pokemon)
 
 Cuando creemos un nuevo modelo debemos ejecutar
 
+`python manage.py makemigrations <app_name>`
+
 `python manage.py migrate`
 
 para registrar correctamente en la base de datos los cambios
